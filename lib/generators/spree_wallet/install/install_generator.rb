@@ -4,10 +4,6 @@ module SpreeWallet
 
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
-      def add_stylesheets
-        inject_into_file 'app/assets/stylesheets/store/all.css', " *= require store/spree_wallet\n", :before => /\*\//, :verbose => true
-      end
-
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_wallet'
       end
